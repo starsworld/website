@@ -1,0 +1,29 @@
+{% extends 'layout.html' %} {% block main %}
+<div id="allList">
+    {% for example in examples %}
+    <div class="col-lg-4 col-md-3 col-sm-4">
+        <a href="details?id={{example.link}}" target="_blank">
+            <div class="exampleBg"><img src={{example.img}}></div>
+        </a>
+        <div class="cover-info">
+            <a href="details?id={{example.link}}" target="_blank">
+                <h4>{{example.title}}</h4>
+            </a><small>{{example.des}}</small></div>
+        <div class="cover-fields"><i class="fa fa-list-ul"></i> &nbsp; {{example.tag}}</div>
+        <div class="cover-stat"><i class="fa fa-eye"></i><span class="f10"> &nbsp;{{example.see}}</span><i class="fa fa-heart"></i></i><span class="f10"> &nbsp;{{example.love}}</span></div>
+    </div>
+    {% endfor %}
+</div>
+<div class="posts-nav-wrap">
+    {% if pages !=0%}
+    <ul class="posts-nav">
+        {% if page != 1 %}
+        <li class="previous"><a href="?category={{category}}&page={{page-1}}" class="previous">←</a></li>
+        {% endif%} {% if page != pages %}
+        <li class="next"><a href="?category={{category}}&page={{page+1}}" class="next">←</a></li>
+        {% endif%}
+    </ul>
+    {% else %}
+    <span>暂无数据</span> {% endif%}
+</div>
+{% endblock%}
